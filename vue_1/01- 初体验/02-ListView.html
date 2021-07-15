@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <ul>
+        <li v-for="item in games">{{item}}</li>
+    </ul>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+    const app = new Vue({
+        el: '#app',
+        data:{
+            message:"你好",
+            games:['Dota2','空之轨迹SC','空之轨迹FC','创之轨迹','魔力宝贝','鬼谷八荒']
+        }
+    })
+
+</script>
+
+</body>
+</html>

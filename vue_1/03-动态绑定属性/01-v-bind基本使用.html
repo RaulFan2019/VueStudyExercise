@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+  <img src="http://www.polchina.com.cn/images/banner_01.jpg">
+  <!-- v-bind 用来绑定属性 -->
+  <img v-bind:src="imgURL" alt="">
+  <a v-bind:href="url">百度一下</a>
+  <!-- v-bind 语法糖-->
+  <img :src="imgURL" alt="">
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      imgURL: 'http://www.polchina.com.cn/images/banner_01.jpg',
+      url:'https://www.baidu.com'
+    }
+  })
+
+</script>
+
+</body>
+</html>

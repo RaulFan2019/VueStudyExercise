@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <!-- 原来的案例里， input里有输入内容时，若切换到另一个input,内容并没有清空 -->
+  <!-- 问题原因是 Vue在进行DOM渲染时，处于性能考虑，在虚拟DOM里将互斥的元素进行复用 -->
+<!--  <span v-if="isPhone">-->
+<!--    <label for="userPhone">用户手机：</label>-->
+<!--    <input type="text" id="userPhone" placeholder="用户手机">-->
+<!--  </span>-->
+<!--  <span v-else>-->
+<!--    <label for="userMail">用户邮箱：</label>-->
+<!--    <input type="text" id="userMail" placeholder="用户邮箱">-->
+<!--  </span>-->
+<!--  <button @click="onChangeClick">切换</button>-->
+
+
+  <span v-if="isPhone">
+    <label for="userPhone">用户手机：</label>
+    <input type="text" id="userPhone" placeholder="用户手机" key="userName">
+  </span>
+  <span v-else>
+    <label for="userMail">用户邮箱：</label>
+    <input type="text" id="userMail" placeholder="用户邮箱" key="userMail">
+  </span>
+  <button @click="onChangeClick">切换</button>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      isPhone: true
+    },
+    methods: {
+      onChangeClick() {
+        this.isPhone = !this.isPhone
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

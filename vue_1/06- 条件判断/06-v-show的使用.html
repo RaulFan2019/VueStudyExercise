@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 当为false的时候 会从DOM中移除 -->
+  <h2 v-if=isShow id="aaa">{{message}}</h2>
+  <!-- 当为false的时候 v-show只是增加一个行内样式 display:none -->
+  <h2 v-show="isShow" id="bbb">{{message2}}</h2>
+
+  <!-- 隐藏和切换频率比较高的时候使用 v-show , 切换频率比较低的时候使用 v-if -->
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      message: '你好2',
+      isShow: true
+    }
+  })
+
+</script>
+
+</body>
+</html>

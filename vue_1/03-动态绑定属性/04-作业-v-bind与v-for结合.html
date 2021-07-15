@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+  <style>
+    .active {
+      color: red;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div id="app">
+  <h2>{{message}}</h2>
+  <ul>
+    <li v-for="(item, index) in games" v-on:click="onItemClick(index)" :class="{active: item.isActive}">{{item.name}}
+    </li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      games: [{name: 'Dota2', isActive: false},
+        {name: '鬼谷八荒', isActive: false},
+        {name: '马里奥', isActive: false},
+        {name: '三国无双', isActive: false},
+        {name: '海贼王', isActive: false}]
+    },
+    methods: {
+      onItemClick: function (index) {
+        console.log("click" + index)
+        this.games[index].isActive = !this.games[index].isActive
+      }
+    }
+  })
+</script>
+</body>

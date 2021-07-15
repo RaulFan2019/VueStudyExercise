@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <span v-if="isPhone">
+    <label for="userPhone">用户手机：</label>
+    <input type="text" id="userPhone" placeholder="用户手机">
+  </span>
+  <span v-else>
+    <label for="userMail">用户邮箱：</label>
+    <input type="text" id="userMail" placeholder="用户邮箱">
+  </span>
+  <button @click="onChangeClick">切换</button>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      isPhone: true
+    },
+    methods: {
+      onChangeClick() {
+        this.isPhone = !this.isPhone
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

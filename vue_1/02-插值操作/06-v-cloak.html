@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
+<div id="app">
+
+  <h2>{{message}}</h2>
+  <!-- 解决插值闪烁效果 -->
+  <h2 v-cloak>{{message}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  setTimeout(function () {
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好'
+      }
+    })
+  }, 1000)
+
+
+</script>
+
+</body>
+</html>

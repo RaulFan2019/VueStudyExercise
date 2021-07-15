@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <h1>{{name}}</h1>
+    <h2>{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+
+<script>
+    //声明式编程
+    const app = new Vue({
+        //用户挂在要管理的元素
+        el: '#app',
+        //定义数据
+        data: {
+            message: '你好，范思远!',
+            name: '范思远'
+        }
+    })
+</script>
+
+</body>
+</html>

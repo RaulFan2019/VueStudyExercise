@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+  <h2>{{counter}}</h2>
+  <button v-on:click="onCounterAddClick()">+</button>
+  <button v-on:click="onCounterSubClick">-</button>
+
+  <!-- 语法糖 -->
+  <button @click="onCounterAddClick()">+</button>
+  <!-- 事件监听时，没有参数，可以省略括号 -->
+  <button @click="onCounterSubClick">-</button>
+
+  <!-- 方法有参数的时候，没有传参数，会默认把event事件传过去 -->
+  <button @click="onTestButtonClick">testClick</button>
+  <!-- 需要 event对象 ，又需要其他参数 -->
+  <button @click="onTestButtonClick2(123,$event)">testClick2</button>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      counter: 0
+    },
+    methods: {
+      onCounterAddClick() {
+        this.counter++;
+      },
+      onCounterSubClick() {
+        this.counter--;
+      },
+      onTestButtonClick(event) {
+        console.log(event)
+      },
+      onTestButtonClick2(abc, event) {
+        console.log(abc, 'event:' , event)
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

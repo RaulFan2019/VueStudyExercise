@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <!-- .stop 阻止事件冒泡 -->
+  <div @click="onClick">
+    <button @click="onClick">按钮</button>
+  </div>
+  <div @click="onClick">
+    <button @click.stop="onClick">按钮</button>
+  </div>
+
+  <!-- .prevent 阻止自动提交 -->
+  <form action="baidu">
+    <input type="submit" value="提交" @click="onSubmitClick">
+  </form>
+  <form action="baidu">
+    <input type="submit" value="提交" @click.prevent="onSubmitClick">
+  </form>
+
+  <!-- .监听键盘按键指定按键 -->
+  <input type="text" v-on:keyup.enter="onKeyUp">
+
+  <!--  once的使用-->
+  <button @click.once="onOnceBtnClick">点击</button>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好'
+    },
+    methods: {
+      onClick(){
+        console.log('onClick')
+      },
+      onSubmitClick(){
+        console.log('onClick')
+      },
+      onKeyUp(){
+        console.log('keyUp')
+      },
+      onOnceBtnClick(){
+        console.log('onOnceBtnClick')
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

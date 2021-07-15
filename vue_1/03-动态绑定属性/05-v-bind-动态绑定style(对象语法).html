@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <!-- 驼峰自动识别 -->
+  <h2 v-bind:style="{fontSize: '50px'}">{{message}}</h2>
+  <h2 v-bind:style="{fontSize: titleSize,color:titleColor}">{{message}}</h2>
+  <h2 v-bind:style="{fontSize: titleSize,color:titleColor}">{{message}}</h2>
+
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      titleSize: '100px',
+      titleColor: 'red'
+    },
+    methods: {
+      getStyles: function (){
+        return {fontSize: this.titleSize,color:this.titleColor}
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

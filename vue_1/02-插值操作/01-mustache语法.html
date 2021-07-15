@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+
+  <h2>{{message}},{{name}}</h2>
+  <h3>性别：{{sex}}</h3>
+  <!-- mustache 语法可以用表达式-->
+  <h3>英文名：{{firstName + ' ' + lastName}}</h3>
+  <h3>{{counter * 2}}</h3>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: "你好",
+      name:"范思远",
+      sex:"男",
+      firstName:'Raul',
+      lastName:'Fan',
+      counter:100
+    }
+  })
+
+</script>
+
+</body>
+</html>
