@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+
+
+<div id="app">
+
+  <h2>{{message}}</h2>
+  <div v-if="books.length == 0">购物车当前为空</div>
+  <div v-else>
+    <table>
+      <thead>
+      <tr>
+        <th></th>
+        <th>书籍名称</th>
+        <th>出版日期</th>
+        <th>价格</th>
+        <th>购买数量</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr v-for="item in books">
+        <td>{{item.id}}</td>
+        <td>《{{item.name}}》</td>
+        <td>{{item.time}}</td>
+        <td>{{item.price | showPrice}}</td>
+        <td>
+          <button @click="onAddClick(item.id)">+</button>
+          {{item.num}}
+          <button @click="onSubClick(item.id)" v-bind:disabled="item.num == 1">-</button>
+        </td>
+        <td>
+          <button @click="onDeleteClick(item.id)">移除</button>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+
+    <h2>总价格：{{totalPrice | showPrice}}</h2>
+  </div>
+
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script src="main.js"></script>
+
+<!--<script>-->
+
+<!--  const app = new Vue({-->
+<!--    el: '#app',-->
+<!--    data: {-->
+<!--      message: '购物车',-->
+<!--      books: [-->
+<!--        {id: 1, name: '算法导论', time: '2006-9', price: 86, num: 1},-->
+<!--        {id: 2, name: 'UNIX编程艺术', time: '2006-2', price: 36, num: 1},-->
+<!--        {id: 3, name: '编程珠玑', time: '2006-10', price: 66, num: 1},-->
+<!--        {id: 4, name: '代码大全', time: '2006-3', price: 126, num: 1}-->
+<!--      ]-->
+<!--    },-->
+<!--    methods: {-->
+<!--      onAddClick(id){-->
+<!--        for (let i = 0; i<this.books.length; i ++){-->
+<!--          if (this.books[i].id == id){-->
+<!--            this.books[i].num ++-->
+<!--            break-->
+<!--          }-->
+<!--        }-->
+<!--      },-->
+<!--      onSubClick(id){-->
+<!--        for (let i = 0; i<this.books.length; i ++){-->
+<!--          if (this.books[i].id == id){-->
+<!--            this.books[i].num &#45;&#45;-->
+<!--            if (this.books[0].num < 1){-->
+<!--              this.books[0].num = 1-->
+<!--            }-->
+<!--            break-->
+<!--          }-->
+<!--        }-->
+<!--      },-->
+<!--      onDeleteClick(id){-->
+<!--        for (let i = 0; i<this.books.length; i ++){-->
+<!--          if (this.books[i].id == id){-->
+<!--            this.books.splice(i,1)-->
+<!--            break-->
+<!--          }-->
+<!--        }-->
+<!--      }-->
+<!--    }-->
+<!--  })-->
+
+<!--</script>-->
+
+
+</body>
+</html>

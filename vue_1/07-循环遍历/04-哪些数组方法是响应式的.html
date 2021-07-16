@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <ul>
+    <li v-for="item in letters" >{{item}}</li>
+  </ul>
+
+  <button @click="btnClick">按钮</button>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      letters: ['A', 'B', 'C', 'D', 'E', 'F']
+    },
+    methods: {
+      btnClick(){
+        //1.push方法 [响应式]
+        this.letters.push('aaa')
+
+        //2.通过索引值改变数组中的元素 [非响应式]
+        this.letters[2] = 'bbbbb'
+
+        //3.pop 删除元素的最后一个元素 [响应式]
+        this.letters.pop()
+
+        //4.shift 删除第一个元素 [响应式]
+        this.letters.shift()
+
+        //5.unshift 数组最前面添加元素 [响应式]
+        this.letters.unshift('aaaa')
+
+        //6.splice方法 [响应式]
+        this.letters.splice(2,0,'G')
+
+        //7.sort [响应式]
+        this.letters.sort()
+
+        //8.reverse [响应式]
+        this.letters.reverse()
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

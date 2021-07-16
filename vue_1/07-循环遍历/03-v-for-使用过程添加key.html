@@ -10,8 +10,14 @@
 <div id="app">
   <h2>{{message}}</h2>
 
+  <!-- 数组执行插入时候性能比较差，交替赋值 -->
   <ul>
     <li v-for="item in letters">{{item}}</li>
+  </ul>
+
+  <!-- 性能比较高 -->
+  <ul>
+    <li v-for="item in letters" key="item">{{item}}</li>
   </ul>
 </div>
 
