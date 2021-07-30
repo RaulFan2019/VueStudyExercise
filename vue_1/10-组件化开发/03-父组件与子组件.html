@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <my_cpn></my_cpn>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  //1.创建第一个组件
+  const cpnC1 = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题</h2>
+        <p>我是内容，哈哈哈</p>
+      </div>
+    `
+  })
+
+  //1.创建第二个组件
+  const cpnC2 = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题2</h2>
+        <p>我是内容，哈哈哈2</p>
+      <cpn_child></cpn_child>
+      </div>
+    `,
+    components: {
+      cpn_child: cpnC1
+    }
+  })
+
+  //可以看成 root 组件
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好'
+    },
+    components:{
+      my_cpn:cpnC2
+    }
+  })
+
+</script>
+
+</body>
+</html>

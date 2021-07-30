@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+  <cpn v-bind:c_games="games" v-bind:c_message="message"></cpn>
+</div>
+
+
+<script src="../js/vue.js"></script>
+
+<template id="cpn">
+  <div>
+    <div>我是一个组件</div>
+    <div>{{c_message}}</div>
+    <ul>
+      <li v-for="item in c_games">{{item}}</li>
+    </ul>
+
+    <ul>
+      <li v-for="item in c_moves">{{item}}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+
+  const cpn = {
+    template: '#cpn',
+    //1. 数组写法
+    // props: ['c_games','c_message']
+    //2. 对象写法
+    props:{
+      c_games: Array,
+      //扩展属性
+      c_message: {
+        //变量类型
+        type: String,
+        //默认值
+        default: 'aaaaaa',
+        //必须传值，不传就报错
+        required: true
+      },
+      //类型是数组类型的时候，default必须是一个函数返回
+      c_moves: {
+        type: Array,
+        default(){
+          return ['海贼王','火影忍者']
+        }
+      }
+    }
+
+  }
+
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好222222222222',
+      games: ['马里奥', 'Dota2', '鬼谷八荒']
+    },
+    components: {
+      cpn
+    }
+  })
+
+</script>
+
+
+</body>
+</html>

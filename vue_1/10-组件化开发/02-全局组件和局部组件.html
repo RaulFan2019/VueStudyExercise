@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <my_cpn></my_cpn>
+  <my_cpn></my_cpn>
+
+  <!-- 不认识在app2中的局部组件 -->
+  <my_cpn2></my_cpn2>
+</div>
+
+
+<div id="app2">
+  <my_cpn></my_cpn>
+  <my_cpn></my_cpn>
+  <my_cpn2></my_cpn2>
+  <my_cpn2></my_cpn2>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+  //1. 创建组件构造器对象
+  const constructor = Vue.extend({
+    template:`
+        <div>
+          <h2>我是标题</h2>
+          <p>我是内容，哈哈哈哈哈</p>
+          <p>我是内容2，哈哈哈哈</p>
+        </div>
+    `
+  })
+
+  const constructor2 = Vue.extend({
+    template:`
+        <div>
+          <h2>我是标题2</h2>
+          <p>我是内容，哈哈哈哈哈2</p>
+          <p>我是内容2，哈哈哈哈2</p>
+        </div>
+    `
+  })
+
+  //2. 注册组件(全局组件)
+  //意味着可以在多个Vue的实例对象中使用
+  Vue.component('my_cpn',constructor)
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好'
+    }
+  })
+
+  const app2 = new Vue({
+    el: '#app2',
+    data:{
+       message: '你好2'
+    },
+    //局部组件
+    components: {
+      my_cpn2:constructor2
+    }
+  })
+
+</script>
+
+</body>
+</html>

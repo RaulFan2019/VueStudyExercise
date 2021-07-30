@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+  <cpn v-bind:c-info="info"></cpn>
+</div>
+
+<script src="../js/vue.js"></script>
+<template id="cpn">
+  <div>
+    <h2>你好啊</h2>
+    <p>{{cInfo}}</p>
+  </div>
+</template>
+
+<script>
+
+  const cpn = {
+    template: '#cpn',
+    props: {
+      cInfo:{
+        type: Object,
+        default(){
+          return {}
+        }
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      info: {
+        name: 'raul',
+        age: 18,
+        height: 1.98
+      }
+    },
+    components: {
+      cpn
+    }
+  })
+
+</script>
+
+</body>
+</html>
